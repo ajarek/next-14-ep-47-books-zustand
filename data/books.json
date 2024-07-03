@@ -1,0 +1,30 @@
+[
+  {
+    "id": 1,
+    "name": "The Art of Computer Programming",
+    "author": "Donald E. Knuth",
+    "year": 1968,
+    "price": 50
+  },
+  {
+    "id": 2,
+    "name": "The C Programming Language",
+    "author": "Brian W. Kernighan ",
+    "year": 1978,
+    "price": 40
+  },
+  {
+    "id": 3,
+    "name": "The C++ Programming Language",
+    "author": "Bjarne Stroustrup",
+    "year": 1980,
+    "price": 45
+  },
+  {
+    "id": 4,
+    "name": "The C Programming Language",
+    "author": "Brian W. Kernighan ",
+    "year": 1978,
+    "price": 40
+  }
+]

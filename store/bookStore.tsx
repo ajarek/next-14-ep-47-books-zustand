@@ -1,13 +1,31 @@
 import { create } from 'zustand'
-interface BearState {
-  bears: number
-  increasePopulation: () => void
-  decreasePopulation: () => void
-  removeAllBears: () => void
+import { persist, createJSONStorage } from 'zustand/middleware'
+
+type Book = {
+  id: number
+  name: string
+  author: string
+  year: number
+  price: number
 }
-export const useBearStore = create<BearState>((set) => ({
-  bears: 0,
-  increasePopulation: () => set((state) => ({ bears: state.bears + 1 })),
-  decreasePopulation: () => set((state) => ({ bears: state.bears - 1 })),
-  removeAllBears: () => set({ bears: 0 }),
-}))
+
+type BookState = {
+  books: Book[]
+  addBook: (book: Book) => void
+  removeBook: (id: number) => void
+}
+
+export const newBookStore = create<BookState>()(
+  persist(
+    (set) => ({
+      books: [],
+      addBook: (book: Book) =>
+        set((state) => ({ books: [book, ...state.books] })),
+      removeBook: (id) =>
+        set((state) => ({
+          books: state.books.filter((book) => book.id != id),
+        })),
+    }),
+    { name: 'bookStore', storage: createJSONStorage(() => localStorage) }
+  )
+)
