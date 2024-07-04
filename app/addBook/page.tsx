@@ -6,12 +6,7 @@ const AddBook = () => {
   const { addBook, books } = newBookStore()
   return (
     <div className='flex min-h-screen flex-col items-center justify-start gap-4 p-24'>
-      <Link
-        href='/'
-        className='underline'
-      >
-        Home
-      </Link>
+    
 
       <div>{books.length}</div>
       <form

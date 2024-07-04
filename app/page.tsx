@@ -6,18 +6,10 @@ export default function Home() {
  
   const { addBook, books, removeBook } = newBookStore()
   return (
-    <main className='flex min-h-screen flex-col items-center justify-start  px-24 py-8'>
-      <nav className='flex items-center gap-8'>
-       
-        <Link
-          className='underline'
-          href='/addBook'
-        >
-          Add Book
-        </Link>
-      </nav>
-      <h1 className='text-2xl text-white'>Online Antiquarian Bookstore</h1>
-      <div className='flex p-4 gap-4'>
+    <main className='flex min-h-screen flex-col items-center justify-start  px-24 py-8 gap-8'>
+      
+      <h1 className='text-2xl text-center text-white '>Online Antiquarian Bookstore</h1>
+      <div className='grid grid-cols-4 max-lg:grid-cols-2 max-sm:grid-cols-1 gap-6'>
         {
          stateBooks.map((book) => (
             <div className='book' key={book.id}>
@@ -30,7 +22,7 @@ export default function Home() {
           ))}
       </div>
       
-      <div className='flex p-4 gap-4'>
+      <div className='grid grid-cols-4 max-lg:grid-cols-2 max-sm:grid-cols-1 gap-6'>
         {books.length > 0 &&
           books.map((book) => (
             <div className='book' key={book.id}>
