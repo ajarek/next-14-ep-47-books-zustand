@@ -15,7 +15,7 @@ const Navbar = async () => {
         {user?.admin && (
           <Link
             href="/dashboard"
-            className={`flex items-center gap-4 hover:bg-primary hover:text-primary-foreground hover:rounded-sm  rounded-sm px-4 py-1 transition`}
+            className={`flex items-center gap-4 hover:text-primary focus:text-primary focus:underline  rounded-sm px-4 py-1 transition text-xl`}
           >
             Dashboard
           </Link>

@@ -9,6 +9,7 @@ export default function Home() {
     <main className='flex min-h-screen flex-col items-center justify-start  px-24 py-8 gap-8'>
       
       <h1 className='text-2xl text-center text-white '>Online Antiquarian Bookstore</h1>
+      <div>Number of books: {(books.length)+4}</div>
       <div className='grid grid-cols-4 max-lg:grid-cols-2 max-sm:grid-cols-1 gap-6'>
         {
          stateBooks.map((book) => (
@@ -30,7 +31,7 @@ export default function Home() {
               <div>{book.author}</div>
               <div>{book.year}</div>
               <div>{(book.price).toFixed(2)}$</div>
-                   <button onClick={() => removeBook(book.id)}>Delete</button>
+                   
             </div>
           ))}
       </div>
