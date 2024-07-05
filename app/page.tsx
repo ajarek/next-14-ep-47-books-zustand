@@ -2,6 +2,8 @@
 import Link from 'next/link'
 import { newBookStore } from '@/store/bookStore'
 import stateBooks from '@/data/books.json'
+import { Button } from '@/components/ui/button'
+import AddToCart from '@/components/AddToCart'
 export default function Home() {
  
   const { addBook, books, removeBook } = newBookStore()
@@ -13,12 +15,12 @@ export default function Home() {
       <div className='grid grid-cols-4 max-lg:grid-cols-2 max-sm:grid-cols-1 gap-6'>
         {
          stateBooks.map((book) => (
-            <div className='book' key={book.id}>
+            <div className='book ' key={book.id}>
               <div className='text-xl'> {book.name}</div>
               <div>{book.author}</div>
               <div>{book.year}</div>
               <div>{(book.price).toFixed(2)}$</div>
-                  
+              <AddToCart  id={book.id} name={book.name} author={book.author} year={book.year} price={book.price} />
             </div>
           ))}
       </div>
@@ -31,7 +33,7 @@ export default function Home() {
               <div>{book.author}</div>
               <div>{book.year}</div>
               <div>{(book.price).toFixed(2)}$</div>
-                   
+              <AddToCart  id={book.id} name={book.name} author={book.author} year={book.year} price={book.price} />
             </div>
           ))}
       </div>

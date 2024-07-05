@@ -18,7 +18,7 @@ const AddBookForm = () => {
       const year = Number(formData.get('year'))
       const price = Number(formData.get('price'))
       addBook({ id, name, author, year, price })
-     router.push('/')
+     router.push('/books')
     }}
     className='max-w-3xl w-full flex flex-col gap-4'
   >
