@@ -2,9 +2,11 @@
 import { newBookStore } from '@/store/bookStore'
 import { Input } from '@/components/ui/input'
 import { Button } from '@/components/ui/button'
+import { useRouter } from 'next/navigation'
 
 const AddBookForm = () => {
   const { addBook, books } = newBookStore()
+  const router = useRouter()
   return (
     <form
     onSubmit={(e) => {
@@ -16,6 +18,7 @@ const AddBookForm = () => {
       const year = Number(formData.get('year'))
       const price = Number(formData.get('price'))
       addBook({ id, name, author, year, price })
+     router.push('/')
     }}
     className='max-w-3xl w-full flex flex-col gap-4'
   >

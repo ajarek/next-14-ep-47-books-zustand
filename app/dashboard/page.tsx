@@ -1,5 +1,6 @@
 'use client'
 import { newBookStore } from '@/store/bookStore'
+import {Trash2} from 'lucide-react'
 import {
   Table,
   TableBody,
@@ -22,7 +23,7 @@ const Dashboard = () => {
             <TableHead>Author</TableHead>
             <TableHead className='text-center'>Publication date</TableHead>
             <TableHead className='text-right'>Price</TableHead>
-            <TableHead className='text-right'>Action</TableHead>
+            <TableHead className='text-center'>Action</TableHead>
           </TableRow>
         </TableHeader>
         <TableBody>
@@ -34,9 +35,8 @@ const Dashboard = () => {
               <TableCell className='text-right'>
                 {book.price.toFixed(2)}$
               </TableCell>
-              <TableCell className='text-right'>
-                {' '}
-                <button onClick={() => removeBook(book.id)}>Delete</button>{' '}
+              <TableCell className='text-center'>
+                <button onClick={() => removeBook(book.id)}><Trash2 color="#ff0000" /></button>{' '}
               </TableCell>
             </TableRow>
           ))}
