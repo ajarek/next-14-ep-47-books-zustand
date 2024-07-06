@@ -1,7 +1,7 @@
 import { create } from 'zustand'
 import { persist, createJSONStorage } from 'zustand/middleware'
 
-type Book = {
+type Item = {
   id: number
   name: string
   author: string
@@ -9,22 +9,23 @@ type Book = {
   price: number
 }
 
-type BookState = {
-  books: Book[]
-  addBookToCart: (book: Book) => void
-  removeBookWithCart: (id: number) => void
+type ItemState = {
+  items:Item[]
+  addItemToCart: (item: Item) => void
+  removeItemWithCart: (id: number) => void
+  total:any
 }
 
-export const addToCart = create<BookState>()(
+export const addToCart = create<ItemState>()(
   persist(
     (set) => ({
-      books: [],
-      addBookToCart: (book: Book) =>
-        set((state) => ({ books: [book, ...state.books] })),
-      removeBookWithCart: (id) =>
-        set((state) => ({
-          books: state.books.filter((book) => book.id != id),
+      items: [],
+      
+      addItemToCart: (item: Item) => set((state) => ({ items: [item, ...state.items] })),
+      removeItemWithCart: (id) =>  set((state) => ({items: state.items.filter((item) => item.id != id),
         })),
+        total:() => set((state) => ({total: state.items.reduce((acc, item) => acc + item.price, 0)})),
+        
     }),
     { name: 'cartStore', storage: createJSONStorage(() => localStorage) }
   )

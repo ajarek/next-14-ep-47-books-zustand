@@ -1,7 +1,7 @@
 'use client'
 import { Button } from '@/components/ui/button'
 import { addToCart } from '@/store/cartStore'
-type Book = {
+type Item = {
   id: number
   name: string
   author: string
@@ -9,17 +9,19 @@ type Book = {
   price: number
 }
 
-const AddToCart = ({ id, name, author, year, price }: Book) => {
-  const { addBookToCart, books } =addToCart()
+const AddToCart = ({ id, name, author, year, price }: Item) => {
+  const { addItemToCart, items } =addToCart()
   const addCart = () => {
-    const book: Book = {
+  
+    const item: Item = {
       id: id,
       name: name,
       author: author,
       year: year,
       price: price
     }
-    addBookToCart(book)
+    if(items.find((item) => item.id === id)) return
+    addItemToCart(item)
   }
   
   return (
