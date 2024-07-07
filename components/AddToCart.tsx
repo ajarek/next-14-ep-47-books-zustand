@@ -1,16 +1,11 @@
 'use client'
 import { Button } from '@/components/ui/button'
-import { addToCart } from '@/store/cartStore'
-type Item = {
-  id: number
-  name: string
-  author: string
-  year: number
-  price: number
-}
+import { useCartStore } from '@/store/cartStore'
+import type {Book } from '@/store/bookStore'
+type Item = Book
 
 const AddToCart = ({ id, name, author, year, price }: Item) => {
-  const { addItemToCart, items } =addToCart()
+  const { addItemToCart, items } =useCartStore()
   const addCart = () => {
   
     const item: Item = {

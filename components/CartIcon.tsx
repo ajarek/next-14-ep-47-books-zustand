@@ -1,11 +1,11 @@
 'use client'
 
-import { addToCart } from '@/store/cartStore'
+import { useCartStore } from '@/store/cartStore'
 import { ShoppingBag } from 'lucide-react'
 import Link from 'next/link'
 
 const CartIcon = () => {
-  const { addItemToCart, items } = addToCart()
+  const { addItemToCart, items } = useCartStore()
   return (
     <Link href='/cart' className='flex items-center gap-1'>
       <ShoppingBag />

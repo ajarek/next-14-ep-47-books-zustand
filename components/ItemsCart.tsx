@@ -1,5 +1,5 @@
 'use client'
-import { addToCart } from '@/store/cartStore'
+import { useCartStore } from '@/store/cartStore'
 import { Trash2 } from 'lucide-react'
 import {
   Table,
@@ -12,12 +12,12 @@ import {
 } from '@/components/ui/table'
 
 const ItemsCart = () => {
-  const { addItemToCart, items, removeItemWithCart, total } = addToCart()
+  const { addItemToCart, items, removeItemFromCart, total } = useCartStore()
   return (
     <div className='px-24 py-8'>
       {items.length > 0 ? (
         <Table>
-          <TableCaption>Total: {total}$</TableCaption>
+          <TableCaption>Total: {total()}$</TableCaption>
           <TableHeader>
             <TableRow>
               <TableHead>Name</TableHead>
@@ -37,7 +37,7 @@ const ItemsCart = () => {
                   {item.price.toFixed(2)}$
                 </TableCell>
                 <TableCell className='text-center'>
-                  <button onClick={() => removeItemWithCart(item.id)}>
+                  <button onClick={() => removeItemFromCart(item.id)}>
                     <Trash2 color='#ff0000' />
                   </button>{' '}
                 </TableCell>
