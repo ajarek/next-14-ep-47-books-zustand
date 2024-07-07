@@ -8,7 +8,7 @@ export default function Home() {
  
   const { addBook, books, removeBook } = newBookStore()
   return (
-    <main className='flex min-h-screen flex-col items-center justify-start  px-24 py-8 gap-8'>
+    <main className='flex min-h-screen flex-col items-center justify-start  px-24 max-sm:px-4 py-8 gap-8'>
       
       <h1 className='text-2xl text-center text-white '>Online Antiquarian Bookstore</h1>
       <div>Number of books: {(books.length)+4}</div>

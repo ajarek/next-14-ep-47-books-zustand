@@ -9,6 +9,7 @@ type ItemState = {
   addItemToCart: (item: Item) => void
   removeItemFromCart: (id:number) => void
   total: () => number
+  removeAll:()=> void
 }
 
 export const useCartStore = create<ItemState>()(
@@ -27,6 +28,7 @@ export const useCartStore = create<ItemState>()(
         })),
 
       total: () => get().items.reduce((acc, item) => acc + item.price, 0),
+      removeAll: () => set({ items: [] }),
     }),
     { name: 'cartStore', storage: createJSONStorage(() => localStorage) }
   )
