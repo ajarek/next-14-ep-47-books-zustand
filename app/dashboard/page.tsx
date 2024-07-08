@@ -15,8 +15,7 @@ const Dashboard = () => {
   const { addBook, books, removeBook } = newBookStore()
   return (
     <div className='px-24 py-8 max-sm:px-2'>
-      {books.length > 0 ? 
-      (
+      {books.length > 0 ? (
         <Table>
           <TableCaption>List of books in the bookstore.</TableCaption>
           <TableHeader>
@@ -48,8 +47,7 @@ const Dashboard = () => {
         </Table>
       ) : (
         <h1 className='text-2xl text-center'>No books</h1>
-      )
-      }
+      )}
     </div>
   )
 }

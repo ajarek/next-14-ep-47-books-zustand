@@ -1,15 +1,15 @@
-import type {Book } from '@/store/bookStore'
+import type { Book } from '@/store/bookStore'
 import { create } from 'zustand'
 import { persist, createJSONStorage } from 'zustand/middleware'
 
-type Item = Book 
+type Item = Book
 
 type ItemState = {
   items: Item[]
   addItemToCart: (item: Item) => void
-  removeItemFromCart: (id:number) => void
+  removeItemFromCart: (id: number) => void
   total: () => number
-  removeAll:()=> void
+  removeAll: () => void
 }
 
 export const useCartStore = create<ItemState>()(
