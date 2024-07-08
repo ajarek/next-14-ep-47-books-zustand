@@ -22,8 +22,8 @@ const AddToCart = ({ id, name, author, year, price }: Item) => {
     addItemToCart(item)
     toast({
       title: "Added to cart",
-      description: "Thank you",
-      className:'w-fit bg-green-500 text-white text-2xl'
+      // description: "Thank you",
+      className:''
     })
   }
   

@@ -21,6 +21,7 @@ export default function RootLayout({
   return (
     <html lang="en">
      <body className={inter.className}>
+     <Toaster/>
       <ThemeProvider
             attribute="class"
             defaultTheme="dark"
@@ -31,7 +32,7 @@ export default function RootLayout({
         {children}
         <Footer/>
         </ThemeProvider>
-        <Toaster />
+        
         </body>
     </html>
   );

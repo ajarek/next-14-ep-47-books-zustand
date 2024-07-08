@@ -10,12 +10,20 @@ import {
   TableHeader,
   TableRow,
 } from '@/components/ui/table'
+import { Button } from './ui/button'
+import { useToast } from "@/components/ui/use-toast"
+import { useRouter } from 'next/navigation'
 
 const ItemsCart = () => {
+  const {toast} = useToast()
   const { addItemToCart, items, removeItemFromCart, total, removeAll } = useCartStore()
+  const date = new Date()
+  const router = useRouter()
+  
   return (
-    <div className='px-24 max-lg:px-8 max-sm:px-4 py-8'>
+    <div className='flex flex-col px-24 max-lg:px-8 max-sm:px-4 py-8 gap-4'>
       {items.length > 0 ? (
+        <>
         <Table>
           <TableCaption className='text-xl text-foreground'>Total: {total()}$</TableCaption>
           <TableHeader>
@@ -39,12 +47,33 @@ const ItemsCart = () => {
                 <TableCell className='text-center'>
                   <button onClick={() => removeItemFromCart(item.id)}>
                     <Trash2 color='#ff0000' />
-                  </button>{' '}
+                  </button>
                 </TableCell>
               </TableRow>
             ))}
           </TableBody>
         </Table>
+        <div className='flex w-full justify-end gap-8 '>
+        <Button variant='destructive' onClick={() => removeAll()}>Delete All</Button>
+        <Button    onClick={() => {
+        toast({
+          title: "Order has been submitted.",
+          description:'amount to pay: '+total()+'$, '+'date: '+ date.toLocaleString('en-US',{
+            weekday: "long",
+            year: "numeric",
+            month: "long",
+            day: "numeric",
+          }),
+        });
+        setTimeout(()=>{
+          removeAll();
+          router.push('/')
+        },2000)
+        
+      }}>I order books</Button>
+
+        </div>
+        </>
       ) : (
         <h1 className='text-2xl text-center py-8'>Cart is empty !</h1>
       )}

@@ -72,7 +72,7 @@ export const {
     },
 
     async redirect({ url, baseUrl }) {
-      return `${baseUrl}/addBook`
+      return `${baseUrl}`
     },
   },
   secret: process.env.AUTH_SECRET,
